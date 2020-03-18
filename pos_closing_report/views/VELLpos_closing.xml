@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+     <report
+            id="pos_closing_report"
+            string="Account Closing report"
+            model="pos.order"
+            report_type="qweb-pdf"
+            name="pos_closing_report.pos_closing_report"
+            file="pos_closing_report.pos_closing_report"
+         />
+   </data>
+</openerp>

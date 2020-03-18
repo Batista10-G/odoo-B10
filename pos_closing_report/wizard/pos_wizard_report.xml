@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+    <record model="ir.ui.view" id="pos_closing_report_form_view">
+        <field name="name">pos.closing.wizard.report.form</field>
+        <field name="model">pos.closing.model</field>
+        <field name="arch" type="xml">
+            <form string="POS Closing Report">
+                <group>					
+                    <field name="config_id"/>
+                </group>
+                <footer>
+                    <button name="check_report" string="Print" type="object" default_focus="1" class="oe_highlight" />
+                    or 
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="pos_closing_report_act_window">
+        <field name="name">POS Closing Report Wizard</field>
+        <field name="res_model">pos.closing.model</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pos_closing_report_form_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <record model="ir.ui.menu" id="pos_closing_report_menu">
+        <field name="name">POS Closing Report</field>
+        <field name="sequence" eval="900"/>
+    </record>
+    <record model="ir.ui.menu" id="pos_closing_wizard_report_menu">
+        <field name="name">POS Closing Report</field>
+        <field name="parent_id" ref="pos_closing_report_menu"/>
+        <field name="action" ref="pos_closing_report_act_window"/>
+        <field name="sequence" eval="901"/>
+    </record>
+	</data>
+</openerp>
+
