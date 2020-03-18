@@ -6,7 +6,9 @@
         <field name="model">pos.closing.model</field>
         <field name="arch" type="xml">
             <form string="POS Closing Report">
-                <group>					
+                <group>
+					<field name="date_ini" />	
+					<field name="date_fi" />				
                     <field name="config_id"/>
                 </group>
                 <footer>
