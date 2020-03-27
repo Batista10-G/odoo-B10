@@ -6,13 +6,24 @@
             <t t-call="report.external_layout">
                 <div class="page">
                     <div>
-                        <span>POS CLOSING REPORT</span> 
+                        <h2>POS CLOSING REPORT</h2> 
                     </div>
                     <div>
                         Terminal: <span t-field="docs.config_id.name"/>
 						Des de: <span t-field="docs.date_ini" /> Fins a: <span t-field="docs.date_fi" />
                     </div>
-					
+					<table class="table table-condensed">
+                    	<thead>
+							<th>Session</th>
+							<th>Status</th>
+							<th>Date init</th>
+							<th>Date end</th>
+							<th>Amount</th>
+						</thead>
+						<tbody>
+							<td><span t-esc="pos_session.name" /></td>
+						</tbody>
+					</table>
                 </div>
             </t>
         </t>
