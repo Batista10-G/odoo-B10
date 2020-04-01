@@ -4,22 +4,23 @@ from openerp.exceptions import UserError
 
 
 class Reportposreportclosing(models.AbstractModel):
-    _name = 'pos.closing.model'
-
-    wizard_id = fields.Many2one('pos.closing.wizard.model')
-    session_id = fields.Many2many('pos.session')
+    _name = 'report.pos_closing_report.pos_closing_report'
 
     @api.model
     def render_html(self, docids, data=None):
         self.model = self.env.context.get('active_model')
         docs = self.env[self.model].browse(self.env.context.get('active_id'))
-        
-        
+
+
         docargs = {
             'doc_ids': self.ids,
             'doc_model': self.model,
             'docs': docs,
+            'get_session': self._get_session,
         }
-        
+
         return self.env['report'].render('pos_closing_report.pos_closing_report', docargs)
 
+    def _get_session(self):
+        var = 'hola'
+        return var

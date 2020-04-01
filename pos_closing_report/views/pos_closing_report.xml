@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<template id="pos_closing_report">
+<template id="pos_closing_report.pos_closing_report">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="o">
             <t t-call="report.external_layout">
@@ -21,7 +21,7 @@
 							<th>Amount</th>
 						</thead>
 						<tbody>
-							<td><span t-esc="pos_session.name" /></td>
+							<td><span t-esc="get_session()" /></td>
 						</tbody>
 					</table>
                 </div>
