@@ -1,21 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, fields, models
+import time
+from openerp.osv import osv, fields
 
-class posreportclosing(models.TransientModel):
+class pos_wizard(osv.osv_memory):
     _name = 'pos.closing.model'
     _description = 'Wizard POS Closing Report'
-    config_id = fields.Many2one('pos.config', string='Terminal', required=True)
-    date_ini =  fields.Date(string='Date Start', requiered=True, default=fields.Date.today)
-    date_fi =  fields.Date(string='Date End', requiered=True, default=fields.Date.today)
+    _columns = {
+        'config_id': fields.many2one('pos.config', string='Terminal', required=True),
+        'date_ini': fields.date('Date Start', requiered=True),
+        'date_fi': fields.date('Date End', requiered=True),
+    }
+    _defaults = {
+        'date_ini': fields.date.context_today,
+        'date_fi': fields.date.context_today,
+    }
 
-    @api.multi
-    def check_report(self):
-        data = {}
-        data['form'] = self.read(['config_id','date_ini','date_fi'])[0]
-        return self._print_report(data)
+    def print_report(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        datas = {'ids': context.get('active_ids', [])}
+        res = self.read(cr, uid, ids, ['date_ini', 'date_fi', 'config_id'], context=context)
+        res = res and res[0] or {}
+        datas['form'] = res
+        if res.get('id',False):
+            datas['ids']=[res['id']]
+        return self.pool['report'].get_action(cr, uid, [], 'pos_closing_report.pos_closing_report', data=datas, context=context)
 
-    def _print_report(self, data):
-        data['form'].update(self.read(['config_id','date_ini','date_fi'])[0])
-        return self.env['report'].get_action(self, 'pos_closing_report.pos_closing_report', data=data)
 

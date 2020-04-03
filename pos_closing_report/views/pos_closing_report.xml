@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<template id="pos_closing_report.pos_closing_report">
-    <t t-call="report.html_container">
+  <data>
+    <template id="pos_closing_report">
+      <t t-call="report.html_container">
         <t t-foreach="docs" t-as="o">
-            <t t-call="report.external_layout">
-                <div class="page">
-                    <div>
-                        <h2>POS CLOSING REPORT</h2> 
-                    </div>
-                    <div>
-                        Terminal: <span t-field="docs.config_id.name"/>
-						Des de: <span t-field="docs.date_ini" /> Fins a: <span t-field="docs.date_fi" />
-                    </div>
-					<table class="table table-condensed">
-                    	<thead>
-							<th>Session</th>
-							<th>Status</th>
-							<th>Date init</th>
-							<th>Date end</th>
-							<th>Amount</th>
-						</thead>
+          <t t-call="report.external_layout">
+            <div class="page">
+              <div>
+                <h2>POS CLOSING REPORT</h2>
+              </div>
+              <div>Terminal: <span t-field="docs.config_id.name"/> Des de: <span t-field="docs.date_ini"/> Fins a: <span t-field="docs.date_fi"/></div>
+              <table class="table table-condensed">
+                <thead>
+                  <th>Session</th>
+                  <th>Status</th>
+                  <th>Date init</th>
+                  <th>Date end</th>
+                  <th class="text-right">Amount</th>
+                </thead>
+                <tbody>
+                  <tr t-foreach="get_session(data['form'])" t-as="line_ids">
+                    <td>
+                      <span t-esc="line_ids['name']"/>
+                    </td>
+                    <td>
+                      <span t-esc="line_ids['state']"/>
+                    </td>
+                    <td>
+                      <span t-esc="formatLang(line_ids['date_ini'],date=True)"/>
+                    </td>
+                    <td>
+                      <span t-esc="formatLang(line_ids['date_fi'],date=True)"/>
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="formatLang(line_ids['total_amount'], currency_obj = res_company.currency_id)"/>
+                    </td>
+					<!-- <table class="table table-condensed">
 						<tbody>
-							<td><span t-esc="get_session()" /></td>
+							<tr t-foreach="get_payment(data['form'],line_ids['id'])" t-as="line_pay">
+
+							</tr>
 						</tbody>
-					</table>
-                </div>
-            </t>
+					</table> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </t>
         </t>
-    </t>
-</template>
+      </t>
+    </template>
+  </data>
 </openerp>
+
