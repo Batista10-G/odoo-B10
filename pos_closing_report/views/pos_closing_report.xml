@@ -4,12 +4,12 @@
     <template id="pos_closing_report">
       <t t-call="report.html_container">
         <t t-foreach="docs" t-as="o">
-          <t t-call="report.external_layout">
+          <t t-call="report.internal_layout">
             <div class="page">
-              <div>
+              <div class="text-center">
                 <h2>POS CLOSING REPORT</h2>
               </div>
-              <div>Terminal: <span t-field="docs.config_id.name"/> Des de: <span t-field="docs.date_ini"/> Fins a: <span t-field="docs.date_fi"/></div>
+              <div>Point of Sale: <span t-field="docs.config_id.name"/> Date Start: <span t-field="docs.date_ini"/> Date end: <span t-field="docs.date_fi"/></div>
               <table class="table table-condensed">
                 <thead>
                   <th>Session</th>
@@ -19,7 +19,7 @@
                   <th class="text-right">Amount</th>
                 </thead>
                 <tbody>
-                  <tr t-foreach="get_session(data['form'])" t-as="line_ids">
+                  <tr t-foreach="get_session(data['form'])" t-as="line_ids" style="background-color: lightgrey;">
                     <td>
                       <span t-esc="line_ids['name']"/>
                     </td>
@@ -35,13 +35,14 @@
                     <td class="text-right">
                       <span t-esc="formatLang(line_ids['total_amount'], currency_obj = res_company.currency_id)"/>
                     </td>
-					<!-- <table class="table table-condensed">
-						<tbody>
-							<tr t-foreach="get_payment(data['form'],line_ids['id'])" t-as="line_pay">
-
-							</tr>
-						</tbody>
-					</table> -->
+                    <tr t-foreach="get_payment(line_ids['id'])" t-as="line_pay">
+                      <td class="text-right" colspan="2">
+                        <span t-esc="line_pay['payment_mode']"/>
+                      </td>
+                      <td class="text-right">
+                        <span t-esc="formatLang(line_pay['cash'], currency_obj = res_company.currency_id)"/>
+                      </td>
+                    </tr>
                   </tr>
                 </tbody>
               </table>

@@ -5,7 +5,7 @@
     'author': "Batista10",
     'website': "https://www.batista10.cat",
     'category': 'Reports',
-    'version': '9.0.0.0.2',
+    'version': '9.0.0.1.0',
     'depends': ['base','report','point_of_sale'],
     'license': 'AGPL-3', 
     'application': True,

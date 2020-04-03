@@ -7,7 +7,7 @@ class pos_wizard(osv.osv_memory):
     _name = 'pos.closing.model'
     _description = 'Wizard POS Closing Report'
     _columns = {
-        'config_id': fields.many2one('pos.config', string='Terminal', required=True),
+        'config_id': fields.many2one('pos.config', string='Point of Sale', required=True),
         'date_ini': fields.date('Date Start', requiered=True),
         'date_fi': fields.date('Date End', requiered=True),
     }

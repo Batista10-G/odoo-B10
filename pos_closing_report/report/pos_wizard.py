@@ -50,16 +50,27 @@ class pos_wizard(report_sxw.rml_parse):
         else:
             return {}
             
-    def _get_payment(self, form, session):
-        pos_pay = self.pool.get('account_bank_statement')
+            
+    def _get_payment(self, session):
+        pos_pay = self.pool.get('account.bank.statement')
         data = []
         result = {}
         payment_ids = pos_pay.search(self.cr, self.uid, [
             ('pos_session_id', '=', session),
-            ('balance_end_real', '!=', 0),
+            ('balance_end_real', '<>', 0),
         ])
-        
-        return 'hola'
+        for pos in pos_pay.browse(self.cr, self.uid, payment_ids, context=self.localcontext):
+            result = {
+                'payment_mode': pos.journal_id.name,
+                'cash': pos.balance_end_real,
+                }
+            data.append(result)
+            
+        if data:
+            return data
+        else:
+            return {}
+
 
     def __init__(self, cr, uid, name, context):
         super(pos_wizard, self).__init__(cr, uid, name, context=context)
