@@ -3,13 +3,12 @@
   <data>
     <template id="pos_closing_report">
       <t t-call="report.html_container">
-        <t t-foreach="docs" t-as="o">
           <t t-call="report.internal_layout">
             <div class="page">
               <div class="text-center">
                 <h2>POS CLOSING REPORT</h2>
               </div>
-              <div>Point of Sale: <span t-field="docs.config_id.name"/> Date Start: <span t-esc='date_ini'/> Date end: <span t-field="docs.date_fi"/></div>
+              <div>Point of Sale: <span t-esc="name" /> Date Start: <span t-esc='date_start' t-options="{'widget': 'date'}"/> Date end: <span t-esc="date_stop" t-options="{'widget': 'date'}"/></div>
               <table class="table table-condensed">
                 <thead>
                   <th>Session</th>
@@ -49,7 +48,6 @@
               </table>
             </div>
           </t>
-        </t>
       </t>
     </template>
   </data>

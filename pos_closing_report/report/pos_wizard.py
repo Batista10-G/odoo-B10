@@ -41,9 +41,11 @@ class Reportposreportclosing(models.AbstractModel):
             ('start_at', '<=', date_fi),
             ('config_id', '=', config_id)])
             
+        name_pos =self.env["pos.config"].search([('id', '=', config_id)]).name
+        
         return {
             'ident': config_id,
-#            'name': pos.name,
+            'name': name_pos,
             'date_ini': date_ini,
             'date_fi': date_fi,
 #            'total_amount': pos.total_amount,
