@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
   <data>
     <template id="pos_closing_report">
       <t t-call="report.html_container">
@@ -9,7 +9,7 @@
               <div class="text-center">
                 <h2>POS CLOSING REPORT</h2>
               </div>
-              <div>Point of Sale: <span t-field="docs.config_id.name"/> Date Start: <span t-field="docs.date_ini"/> Date end: <span t-field="docs.date_fi"/></div>
+              <div>Point of Sale: <span t-field="docs.config_id.name"/> Date Start: <span t-esc='date_ini'/> Date end: <span t-field="docs.date_fi"/></div>
               <table class="table table-condensed">
                 <thead>
                   <th>Session</th>
@@ -19,7 +19,8 @@
                   <th class="text-right">Amount</th>
                 </thead>
                 <tbody>
-                  <tr t-foreach="get_session(data['form'])" t-as="line_ids" style="background-color: lightgrey;">
+					<!--<tr> <span t-esc="get_session(data['form'])" /></tr>
+                   <tr t-foreach="get_session(data['form'])" t-as="line_ids" style="background-color: lightgrey;">
                     <td>
                       <span t-esc="line_ids['name']"/>
                     </td>
@@ -43,7 +44,7 @@
                         <span t-esc="formatLang(line_pay['cash'], currency_obj = res_company.currency_id)"/>
                       </td>
                     </tr>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
@@ -52,5 +53,5 @@
       </t>
     </template>
   </data>
-</openerp>
+</odoo>
 

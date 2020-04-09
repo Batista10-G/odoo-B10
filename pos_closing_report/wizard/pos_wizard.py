@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 
-import time
-from openerp.osv import osv, fields
+from odoo import api, fields, models
+from odoo.exceptions import UserError
 
-class pos_wizard(osv.osv_memory):
-    _name = 'pos.closing.model'
+class pos_wizard(models.TransientModel):
+    _name = 'pos.closing.wizard'
     _description = 'Wizard POS Closing Report'
-    _columns = {
-        'config_id': fields.many2one('pos.config', string='Point of Sale', required=True),
-        'date_ini': fields.date('Date Start', requiered=True),
-        'date_fi': fields.date('Date End', requiered=True),
-    }
-    _defaults = {
-        'date_ini': fields.date.context_today,
-        'date_fi': fields.date.context_today,
-    }
+    start_date = fields.Datetime(required=True, default=fields.Datetime.now)
+    end_date = fields.Datetime(required=True, default=fields.Datetime.now)
+    pos_session_ids = fields.Many2one('pos.config', string='Point of Sale', required=True)
 
-    def print_report(self, cr, uid, ids, context=None):
-        if context is None:
-            context = {}
-        datas = {'ids': context.get('active_ids', [])}
-        res = self.read(cr, uid, ids, ['date_ini', 'date_fi', 'config_id'], context=context)
-        res = res and res[0] or {}
-        datas['form'] = res
-        if res.get('id',False):
-            datas['ids']=[res['id']]
-        return self.pool['report'].get_action(cr, uid, [], 'pos_closing_report.pos_closing_report', data=datas, context=context)
+    @api.onchange('start_date')
+    def _onchange_start_date(self):
+        if self.start_date and self.end_date and self.end_date < self.start_date:
+            self.end_date = self.start_date
+
+    @api.onchange('end_date')
+    def _onchange_end_date(self):
+        if self.end_date and self.end_date < self.start_date:
+            self.start_date = self.end_date
+
+    @api.multi
+    def generate_report(self):
+        data = {'date_start': self.start_date, 'date_stop': self.end_date, 'session_id': self.pos_session_ids.ids}
+        return self.env['report'].get_action(
+            [], 'pos_closing_report.pos_closing_report', data=data)
+
 
 
