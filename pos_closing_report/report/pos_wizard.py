@@ -11,6 +11,7 @@ class Reportposreportclosing(models.AbstractModel):
 
     @api.model
     def get_session(self, date_ini=False, date_fi=False, config_id=False):
+    
         if not config_id:
             config_id = self.env['pos.session'].search([])
         
@@ -20,17 +21,13 @@ class Reportposreportclosing(models.AbstractModel):
         if date_ini:
             date_ini = fields.Datetime.from_string(date_ini)
         else:
-            # start by default today 00:00:00
             date_ini = today
 
         if date_fi:
-            # set time to 23:59:59
             date_fi = fields.Datetime.from_string(date_fi)
         else:
-            # stop by default today 23:59:59
             date_fi = today + timedelta(days=1, seconds=-1)
 
-        # avoid a date_stop smaller than date_start
         date_fi = max(date_fi, date_ini)
 
         date_ini = fields.Datetime.to_string(date_ini)
@@ -43,13 +40,20 @@ class Reportposreportclosing(models.AbstractModel):
             
         name_pos =self.env["pos.config"].search([('id', '=', config_id)]).name
         
+        
         return {
             'ident': config_id,
             'name': name_pos,
             'date_ini': date_ini,
             'date_fi': date_fi,
-#            'total_amount': pos.total_amount,
-#            'state': pos.state,
+            'sessions': [{
+                'session_id': session.id,
+                'session_name': session.name,
+                'session_stat': session.state,
+                'session_ini': session.start_at,
+                'session_fi': session.stop_at,
+                'session_amount': session.cash_register_total_entry_encoding
+                } for session in session_ids]
             } 
         
     @api.multi

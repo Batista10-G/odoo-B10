@@ -18,32 +18,30 @@
                   <th class="text-right">Amount</th>
                 </thead>
                 <tbody>
-					<!--<tr> <span t-esc="get_session(data['form'])" /></tr>
-                   <tr t-foreach="get_session(data['form'])" t-as="line_ids" style="background-color: lightgrey;">
+                   <tr t-foreach="sessions" t-as="line_ids" style="background-color: lightgrey;">
                     <td>
-                      <span t-esc="line_ids['name']"/>
+                      <span t-esc="line_ids['session_name']"/> 
                     </td>
                     <td>
-                      <span t-esc="line_ids['state']"/>
+                      <span t-esc="line_ids['session_stat']"/>
                     </td>
                     <td>
-                      <span t-esc="formatLang(line_ids['date_ini'],date=True)"/>
+                      <span t-esc="line_ids['session_ini']"/>
                     </td>
                     <td>
-                      <span t-esc="formatLang(line_ids['date_fi'],date=True)"/>
+                      <span t-esc="line_ids['session_fi']"/>
                     </td>
                     <td class="text-right">
-                      <span t-esc="formatLang(line_ids['total_amount'], currency_obj = res_company.currency_id)"/>
+                      <span t-esc="line_ids['session_amount']"/>
                     </td>
-                    <tr t-foreach="get_payment(line_ids['id'])" t-as="line_pay">
+                    <!-- <tr t-foreach="get_payment(line_ids['id'])" t-as="line_pay">
                       <td class="text-right" colspan="2">
                         <span t-esc="line_pay['payment_mode']"/>
                       </td>
                       <td class="text-right">
                         <span t-esc="formatLang(line_pay['cash'], currency_obj = res_company.currency_id)"/>
-                      </td>
+                      </td>-->
                     </tr>
-                  </tr> -->
                 </tbody>
               </table>
             </div>
