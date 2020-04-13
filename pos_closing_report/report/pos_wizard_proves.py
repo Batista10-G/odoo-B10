@@ -33,35 +33,35 @@ class Reportposreportclosing(models.AbstractModel):
         date_ini = fields.Datetime.to_string(date_ini)
         date_fi = fields.Datetime.to_string(date_fi)
                 
-        session_ids = self.env['pos.session'].search([
-            ('start_at', '>=', date_ini),
-            ('start_at', '<=', date_fi),
-            ('config_id', '=', config_id)])
+        session_ids = self.env['account.bank.statement'].search([
+            ('create_date', '>=', date_ini),
+            ('create_date', '<=', date_fi)])
             
         name_pos = self.env["pos.config"].search([('id', '=', config_id)]).name
         
-        session_bank = self.env['account.bank.statement'].search([
-            ('create_date', '>=', date_ini),
-            ('create_date', '<=', date_fi),
-            ('pos_session_id.config_id', '=', config_id)])
-            
-        amount = {}
-        for payment in session_bank:
-            amount.setdefault(payment.pos_session_id.name, 0.0)
-            amount[payment.pos_session_id.name] += payment.balance_end
-            
+#        session_bank = self.env['account.bank.statement'].search([])
+#        amount = {}
+#        for payment in session_bank:
+#            amount.setdefault(payment.pos_session_id, 0.0)
+#            amount[payment.pos_session_id] += payment.balance_end
+#            if payment.pos_session_id in amount:
+#               amountanterior = amount[payment.pos_session_id]
+#            else:
+#               amountanterior = 0
+#            amount[payment.pos_session_id] = payment.balance_end + amountanterior
+        
         return {
             'ident': config_id,
             'name': name_pos,
             'date_ini': date_ini,
             'date_fi': date_fi,
             'sessions': [{
-                'session_id': session.id,
-                'session_name': session.name,
-                'session_stat': session.state,
-                'session_ini': session.start_at,
-                'session_fi': session.stop_at,
-                'session_amount': amount[session.name]
+                'session_id': session.pos_session_id.id,
+                'session_name': session.pos_session_id.name,
+                'session_stat': session.pos_session_id.state,
+                'session_ini': session.pos_session_id.start_at,
+                'session_fi': session.pos_session_id.stop_at,
+                'session_amount': session.balance_end
                 } for session in session_ids]
             } 
         
