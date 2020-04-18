@@ -46,6 +46,7 @@ class Reportposreportclosing(models.AbstractModel):
             ('pos_session_id.config_id', '=', config_id)])
             
         amount = {}
+        linies = {}
         for payment in session_bank:
             amount.setdefault(payment.pos_session_id.name, 0.0)
             amount[payment.pos_session_id.name] += payment.balance_end
@@ -61,8 +62,13 @@ class Reportposreportclosing(models.AbstractModel):
                 'session_stat': session.state,
                 'session_ini': session.start_at,
                 'session_fi': session.stop_at,
-                'session_amount': amount[session.name]
-                } for session in session_ids]
+                'session_amount': amount[session.name],
+                } for session in session_ids],
+            'linies': [{
+                'fpago': payment.journal_id.name,
+                'total': payment.balance_end,
+                'session_nom': payment.pos_session_id.name
+                } for payment in session_bank]
             } 
         
     @api.multi

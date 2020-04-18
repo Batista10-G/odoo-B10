@@ -3,49 +3,50 @@
   <data>
     <template id="pos_closing_report">
       <t t-call="report.html_container">
-          <t t-call="report.internal_layout">
-            <div class="page">
-              <div class="text-center">
-                <h2>POS CLOSING REPORT</h2>
-              </div>
-              <div>Point of Sale: <span t-esc="name" /> Date Start: <span t-esc='date_start' t-options="{'widget': 'date'}"/> Date end: <span t-esc="date_stop" t-options="{'widget': 'date'}"/></div>
-              <table class="table table-condensed">
-                <thead>
-                  <th>Session</th>
-                  <th>Status</th>
-                  <th>Date init</th>
-                  <th>Date end</th>
-                  <th class="text-right">Amount</th>
-                </thead>
-                <tbody>
-                   <tr t-foreach="sessions" t-as="line_ids" style="background-color: lightgrey;">
-                    <td>
-                      <span t-esc="line_ids['session_name']"/> 
-                    </td>
-                    <td>
-                      <span t-esc="line_ids['session_stat']"/>
-                    </td>
-                    <td>
-                      <span t-esc="line_ids['session_ini']"/>
-                    </td>
-                    <td>
-                      <span t-esc="line_ids['session_fi']"/>
-                    </td>
-                    <td class="text-right">
-                      <span t-esc="line_ids['session_amount']"/>
-                    </td>
-                    <!-- <tr t-foreach="get_payment(line_ids['id'])" t-as="line_pay">
-                      <td class="text-right" colspan="2">
-                        <span t-esc="line_pay['payment_mode']"/>
-                      </td>
-                      <td class="text-right">
-                        <span t-esc="formatLang(line_pay['cash'], currency_obj = res_company.currency_id)"/>
-                      </td>-->
-                    </tr>
-                </tbody>
-              </table>
+        <t t-call="report.internal_layout">
+          <div class="page">
+            <div class="text-center">
+              <h2>POS CLOSING REPORT</h2>
             </div>
-          </t>
+            <div>Point of Sale: <span t-esc="name"/> Date Start: <span t-esc="date_start" t-options="{'widget': 'date'}"/> Date end: <span t-esc="date_stop" t-options="{'widget': 'date'}"/></div>
+            <table class="table table-condensed">
+              <thead>
+                <th>Session</th>
+                <th>Status</th>
+                <th>Date init</th>
+                <th>Date end</th>
+                <th class="text-right">Amount</th>
+              </thead>
+              <tbody>
+                <tr t-foreach="sessions" t-as="line_ids" style="background-color: lightgrey;">
+                  <td>
+                    <span t-esc="line_ids['session_name']"/>
+                  </td>
+                  <td>
+                    <span t-esc="line_ids['session_stat']"/>
+                  </td>
+                  <td>
+                    <span t-esc="line_ids['session_ini']"/>
+                  </td>
+                  <td>
+                    <span t-esc="line_ids['session_fi']"/>
+                  </td>
+                  <td class="text-right">
+                    <span t-esc="line_ids['session_amount']"/>
+                  </td>
+                  <tr t-foreach="linies" t-as="line_pay" t-if="line_pay['session_nom'] == line_ids['session_name']" >
+                    <td class="text-right" colspan="2">
+                      <span t-esc="line_pay['fpago']" />
+                    </td>
+                    <td class="text-right"> 
+                        <span t-esc="line_pay['total']"/>
+                    </td>
+                  </tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </t>
       </t>
     </template>
   </data>
