@@ -10,7 +10,7 @@
                         <field name="end_date"/>
                     </group>
                     <group>
-                        <field name="pos_session_ids" colspan="4" nolabel="1" />
+                        <strong>Point of Sale</strong><field name="pos_session_ids" colspan="4" nolabel="1" />
                     </group>
                     <footer>
                         <button name="generate_report" string="Print" type="object" class="btn-primary"/>

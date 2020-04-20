@@ -6,9 +6,9 @@ from odoo.exceptions import UserError
 class pos_wizard(models.TransientModel):
     _name = 'pos.closing.wizard'
     _description = 'Wizard POS Closing Report'
-    start_date = fields.Datetime(required=True, default=fields.Datetime.now)
-    end_date = fields.Datetime(required=True, default=fields.Datetime.now)
-    pos_session_ids = fields.Many2one('pos.config', string='Point of Sale', required=True)
+    start_date = fields.Date(required=True, default=fields.Date.today)
+    end_date = fields.Date(required=True, default=fields.Date.today)
+    pos_session_ids = fields.Many2one('pos.config', string='Point of Sale Name', required=True)
 
     @api.onchange('start_date')
     def _onchange_start_date(self):

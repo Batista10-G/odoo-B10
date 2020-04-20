@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
 
 <!-- Oculta el cost de la fitxa del producte -->
     <record model="ir.ui.view" id="show_cost_price_form_product_template">
@@ -78,4 +78,4 @@
 		</field>
 	</record>
 
-</openerp>
+</odoo>
