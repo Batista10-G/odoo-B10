@@ -5,6 +5,6 @@ Aquest mòdul crea un informe de resum dels tancaments de caixa diaris.
 
 Registre de Versions:
 
-- 10.0.0.1.0
+- 11.0.0.0.0
 
-* Traspàs des de versió 9
+* Traspàs des de versió 10
