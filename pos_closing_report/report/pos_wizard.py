@@ -49,7 +49,7 @@ class Reportposreportclosing(models.AbstractModel):
         linies = {}
         for payment in session_bank:
             amount.setdefault(payment.pos_session_id.name, 0.0)
-            amount[payment.pos_session_id.name] += payment.balance_end
+            amount[payment.pos_session_id.name] += payment.total_entry_encoding
             
         return {
             'ident': config_id,
@@ -59,14 +59,16 @@ class Reportposreportclosing(models.AbstractModel):
             'sessions': [{
                 'session_id': session.id,
                 'session_name': session.name,
-                'session_stat': session.state,
+                'session_stat': dict(self.env['pos.session']._fields['state']._description_selection(self.env))[session.state],
                 'session_ini': session.start_at,
                 'session_fi': session.stop_at,
                 'session_amount': amount[session.name],
                 } for session in session_ids],
             'linies': [{
                 'fpago': payment.journal_id.name,
-                'total': payment.balance_end,
+                'declarat': payment.balance_end,
+                'canvi': payment.balance_start,
+                'total': payment.total_entry_encoding,
                 'session_nom': payment.pos_session_id.name
                 } for payment in session_bank]
             } 
