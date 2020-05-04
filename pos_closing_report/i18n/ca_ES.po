@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 12:19+0000\n"
-"PO-Revision-Date: 2020-04-20 14:23+0200\n"
+"POT-Creation-Date: 2020-05-03 17:31+0000\n"
+"PO-Revision-Date: 2020-05-03 19:35+0200\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,21 @@ msgstr ""
 "Plural-Forms: \n"
 "Language: ca_ES\n"
 "X-Generator: Poedit 2.2.1\n"
+
+#. module: pos_closing_report
+#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
+msgid "<strong> Date Start: </strong>"
+msgstr "<strong> Data Inicial: </strong>"
+
+#. module: pos_closing_report
+#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
+msgid "<strong> Date end: </strong>"
+msgstr "<strong> Data final: </strong>"
+
+#. module: pos_closing_report
+#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
+msgid "<strong>Point of Sale: </strong>"
+msgstr "<strong>Punt de Venda: </strong>"
 
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.view_pos_session_wizard
@@ -44,23 +59,18 @@ msgstr "Creat el"
 
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
-msgid "Date Start:"
-msgstr "Data d'inici:"
-
-#. module: pos_closing_report
-#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
 msgid "Date end"
 msgstr "Data final"
 
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
-msgid "Date end:"
-msgstr "Data final:"
+msgid "Date init"
+msgstr "Data inicial"
 
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
-msgid "Date init"
-msgstr "Data inicial"
+msgid "Declared"
+msgstr "Declarat"
 
 #. module: pos_closing_report
 #: model:ir.model.fields,field_description:pos_closing_report.field_pos_closing_wizard_display_name
@@ -78,6 +88,11 @@ msgstr "Data de finalització"
 #: model:ir.model.fields,field_description:pos_closing_report.field_report_pos_closing_report_pos_closing_report_id
 msgid "ID"
 msgstr "ID"
+
+#. module: pos_closing_report
+#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
+msgid "Initial Amount"
+msgstr "Canvi Inicial"
 
 #. module: pos_closing_report
 #: model:ir.model.fields,field_description:pos_closing_report.field_pos_closing_wizard___last_update
@@ -114,22 +129,27 @@ msgstr "Assistent Informe de tancament de TPV"
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.view_pos_session_wizard
 msgid "POS Report Closing"
-msgstr "POS Report Closing"
+msgstr "Informe de tancament TPV"
+
+#. module: pos_closing_report
+#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
+msgid "Payment Mode"
+msgstr "Forma de pagament"
 
 #. module: pos_closing_report
 #: model:ir.model.fields,field_description:pos_closing_report.field_pos_closing_wizard_pos_session_ids
 msgid "Point of Sale Name"
-msgstr "Nom del punt de venda"
-
-#. module: pos_closing_report
-#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
-msgid "Point of Sale:"
-msgstr "Punt de Venda:"
+msgstr "Nom Punt de Venda"
 
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.view_pos_session_wizard
 msgid "Print"
 msgstr "Imprimeix"
+
+#. module: pos_closing_report
+#: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
+msgid "Real"
+msgstr "Real"
 
 #. module: pos_closing_report
 #: model:ir.ui.view,arch_db:pos_closing_report.pos_closing_report
@@ -150,7 +170,7 @@ msgstr "Estat"
 #: model:ir.model,name:pos_closing_report.model_pos_closing_model
 #: model:ir.model,name:pos_closing_report.model_pos_closing_wizard
 msgid "Wizard POS Closing Report"
-msgstr "Assistent Informe de Tancament de Caixa"
+msgstr "Wizard POS Closing Report"
 
 #. module: pos_closing_report
 #: model:ir.model,name:pos_closing_report.model_report_pos_closing_report_pos_closing_report

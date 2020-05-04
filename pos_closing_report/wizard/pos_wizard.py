@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 class pos_wizard(models.TransientModel):
@@ -23,8 +23,7 @@ class pos_wizard(models.TransientModel):
     @api.multi
     def generate_report(self):
         data = {'date_start': self.start_date, 'date_stop': self.end_date, 'session_id': self.pos_session_ids.ids}
-        return self.env['report'].get_action(
-            [], 'pos_closing_report.pos_closing_report', data=data)
+        return self.env.ref('pos_closing_report.pos_closing_report').report_action([], data=data)
 
 
 

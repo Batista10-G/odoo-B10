@@ -8,7 +8,7 @@
             <div class="text-center">
               <h2>POS CLOSING REPORT</h2>
             </div>
-            <div>Point of Sale: <span t-esc="name"/> Date Start: <span t-esc="date_start" t-options="{'widget': 'date'}"/> Date end: <span t-esc="date_stop" t-options="{'widget': 'date'}"/></div>
+            <div><strong>Point of Sale: </strong><span t-esc="name"/><strong> Date Start: </strong><span t-esc="date_start" t-options="{'widget': 'date'}"/><strong> Date end: </strong><span t-esc="date_stop" t-options="{'widget': 'date'}"/></div>
             <table class="table table-condensed">
               <thead>
                 <th>Session</th>
@@ -26,17 +26,29 @@
                     <span t-esc="line_ids['session_stat']"/>
                   </td>
                   <td>
-                    <span t-esc="line_ids['session_ini']"/>
+                    <span t-esc="line_ids['session_ini']" t-options="{'widget': 'date'}"/>
                   </td>
                   <td>
-                    <span t-esc="line_ids['session_fi']"/>
+                    <span t-esc="line_ids['session_fi']" t-options="{'widget': 'date'}"/>
                   </td>
                   <td class="text-right">
                     <span t-esc="line_ids['session_amount']"/>
                   </td>
+                  <tr>
+                  <th class="text-right" colspan="1">Payment Mode</th>
+                  <th class="text-right">Initial Amount</th>
+                  <th class="text-right">Declared</th>
+                  <th class="text-right">Real</th>
+                  </tr>
                   <tr t-foreach="linies" t-as="line_pay" t-if="line_pay['session_nom'] == line_ids['session_name']" >
-                    <td class="text-right" colspan="2">
+                    <td class="text-right" colspan="1">
                       <span t-esc="line_pay['fpago']" />
+                    </td>
+                    <td class="text-right"> 
+                        <span t-esc="line_pay['canvi']"/>
+                    </td>
+                    <td class="text-right"> 
+                        <span t-esc="line_pay['declarat']"/>
                     </td>
                     <td class="text-right"> 
                         <span t-esc="line_pay['total']"/>
