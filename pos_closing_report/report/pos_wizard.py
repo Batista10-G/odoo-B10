@@ -7,7 +7,7 @@ from odoo import api, fields, models
 
 
 class Reportposreportclosing(models.AbstractModel):
-    _name = 'report.pos_closing_report.pos_closing_report'
+    _name = 'report.pos_closing_report.report_pos_closing_report'
 
     @api.model
     def get_session(self, date_ini=False, date_fi=False, config_id=False):
@@ -74,9 +74,9 @@ class Reportposreportclosing(models.AbstractModel):
             } 
         
     @api.multi
-    def render_html(self, docids, data=None):
+    def get_report_values(self, docids, data=None):
         data = dict(data or {})
         config_id = self.env['pos.config'].browse(data['session_id'])
         data.update(self.get_session(data['date_start'], data['date_stop'], data['session_id']))
-        return self.env['report'].render('pos_closing_report.pos_closing_report', data)
+        return data
 

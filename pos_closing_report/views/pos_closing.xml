@@ -2,11 +2,11 @@
 <odoo>
     <data>
         <report 
-            id="action_pos_closing_report"
+            id="pos_closing_report"
             model="report.pos_closing_report.pos_closing_report"
             string="POS Closing Report"
             report_type="qweb-pdf"
-            name="pos_closing_report.pos_closing_report"
+            name="pos_closing_report.report_pos_closing_report"
             file="pos_closing_report.pos_closing_report"
             />
     </data>
