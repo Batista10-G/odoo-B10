@@ -7,7 +7,7 @@
     'author': 'Marc Tormo - Batista10',
     'website': "https://github.com/B10Serveis/Odoo-addons/hide_cost",
     'depends': ['account', 'product', 'sale', 'sale_margin'],
-    'version': '11.0.0.1.0',
+    'version': '12.0.0.1.0',
     'license': 'AGPL-3', 
     'application': True,
     'category': 'Sales',

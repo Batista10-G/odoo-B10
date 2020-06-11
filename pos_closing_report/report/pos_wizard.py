@@ -74,7 +74,7 @@ class Reportposreportclosing(models.AbstractModel):
             } 
         
     @api.multi
-    def get_report_values(self, docids, data=None):
+    def _get_report_values(self, docids, data=None):
         data = dict(data or {})
         config_id = self.env['pos.config'].browse(data['session_id'])
         data.update(self.get_session(data['date_start'], data['date_stop'], data['session_id']))
