@@ -1,6 +1,0 @@
-account-financial-reporting
-account-financial-tools
-community-data-files
-mis-builder
-partner-contact
-bank-payment
