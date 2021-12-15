@@ -5,7 +5,7 @@ Aquest mòdul oculta costos per usuari a la fitxa del del producte i als documen
 
 Registre de Versions:
 
-- 12.0.0.1.0
+- 14.0.0.1.0
 
-* Traspàs des de versió 11
+* Traspàs des de versió 13
 
