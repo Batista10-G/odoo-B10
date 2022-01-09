@@ -98,12 +98,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <div>
                                     <field name="profit_margin" class="oe_inline"
                                         attrs="{'required': True}"/>
-                                    <label string="%" class="oe_inline"/>
+                                    <label for="profit_margin" string="%" class="oe_inline"/>
                                 </div>
                                 <label for="markup"/>
                                 <div>
                                     <field name="markup" class="oe_inline"/>
-                                    <label string="%" class="oe_inline"/>
+                                    <label for="markup" string="%" class="oe_inline"/>
                                 </div>
                                 <field name="price_round"/>
                                 <field name="price_surcharge"/>

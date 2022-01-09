@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import datetime
 import pytz
 import time
@@ -16,22 +14,22 @@ class Reportposreportclosing(models.AbstractModel):
             config_id = self.env['pos.session'].search([])
         
         user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz or 'UTC')
-        today = user_tz.localize(fields.Datetime.from_string(fields.Date.context_today(self)))
+        today = user_tz.localize(fields.Datetime.to_datetime(fields.Date.context_today(self)))
         today = today.astimezone(pytz.timezone('UTC'))
         if date_ini:
-            date_ini = fields.Datetime.from_string(date_ini)
+            date_ini = fields.Datetime.to_datetime(date_ini)
         else:
             date_ini = today
 
         if date_fi:
-            date_fi = fields.Datetime.from_string(date_fi)
+            date_fi = fields.Datetime.to_datetime(date_fi)
         else:
             date_fi = today + timedelta(days=1, seconds=-1)
 
         date_fi = max(date_fi, date_ini)
 
-        date_ini = fields.Datetime.to_string(date_ini)
-        date_fi = fields.Datetime.to_string(date_fi)
+        date_ini = fields.Datetime.to_datetime(date_ini)
+        date_fi = fields.Datetime.to_datetime(date_fi)
                 
         session_ids = self.env['pos.session'].search([
             ('start_at', '>=', date_ini),

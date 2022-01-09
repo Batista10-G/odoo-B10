@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 - Marc Tormo i Bochaca - Batista10
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
@@ -7,7 +6,7 @@
     'author': 'Marc Tormo - Batista10',
     'website': "https://github.com/B10Serveis/Odoo-addons/hide_cost",
     'depends': ['account', 'product', 'sale', 'sale_margin'],
-    'version': '12.0.0.1.0',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3', 
     'application': True,
     'category': 'Sales',
