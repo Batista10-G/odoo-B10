@@ -2,7 +2,7 @@
 	<data>
 		<record id="view_form_product_ccpae_inherited"
 			model="ir.ui.view">
-			<field name="name">ccpae</field>
+			<field name="name">Product ccpae</field>
 			<field name="model">product.template</field>
 			<field name="inherit_id"
 				ref="product.product_template_form_view"/>

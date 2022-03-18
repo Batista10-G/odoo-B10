@@ -1,5 +1,5 @@
 ====================
-ccpae
+product ccpae
 ====================
 
 Mòdul per adaptació a CCPAE 

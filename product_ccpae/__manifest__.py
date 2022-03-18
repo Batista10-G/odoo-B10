@@ -1,5 +1,5 @@
 {
-    'name': "CCPAE",
+    'name': "product_ccpae",
     'summary': """Personalització CCPAE""",
     'author': "Batista10",
     'website': "https://www.batista10.cat",
