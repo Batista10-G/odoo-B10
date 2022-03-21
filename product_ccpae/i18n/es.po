@@ -1,0 +1,44 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_ccpae
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-21 11:19+0000\n"
+"PO-Revision-Date: 2022-03-21 12:33+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: product_ccpae
+#: model:ir.model.fields,field_description:product_ccpae.field_product_template__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: product_ccpae
+#: model:ir.model.fields,field_description:product_ccpae.field_product_template__id
+msgid "ID"
+msgstr "Codigo"
+
+#. module: product_ccpae
+#: model:ir.model.fields,field_description:product_ccpae.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: product_ccpae
+#: model:ir.model.fields,field_description:product_ccpae.field_product_product__ntv_access
+#: model:ir.model.fields,field_description:product_ccpae.field_product_template__ntv_access
+msgid "Product CCPAE"
+msgstr "Producto CCPAE"
+
+#. module: product_ccpae
+#: model:ir.model,name:product_ccpae.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
